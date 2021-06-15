@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Install Dependencies
         run: |
-          sudo apt-get install pkg-config
+          sudo apt-get install curl build-essential python cmake pkg-config
           sudo apt-get install libasound2-dev
 
   update:
