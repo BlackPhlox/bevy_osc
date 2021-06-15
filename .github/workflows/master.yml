@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Dependencies
-        run: sudo apt-get install pkg-config
+        run: |
+          sudo apt-get install pkg-config
+          sudo apt-get install libasound2-dev
 
   update:
     name: Update
