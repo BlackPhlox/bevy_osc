@@ -1,5 +1,7 @@
 
-# bevy_osc
+<div align="left">
+<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" width="1320" height="330" alt="bevy_osc"></a>
+</div>
 
 To test `simple` and the `custom` example:
 1. Install [orca](https://hundredrabbits.itch.io/orca)
