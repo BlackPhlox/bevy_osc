@@ -1,6 +1,6 @@
 
 <div align="left">
-<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" width="1300" height="310" alt="bevy_osc"></a>
+<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" width="1300" height="280" alt="bevy_osc"></a>
 </div>
 
 To test `simple` and the `custom` example:
