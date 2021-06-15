@@ -1,21 +1,10 @@
-use bevy::{
-    prelude::*,
-};
-use bevy_osc::{MyEvent, OSC};
+use bevy::prelude::*;
+use bevy_osc::OSC;
 
-#[derive(Debug, Hash, PartialEq, Eq, Clone, StageLabel)]
-struct FixedUpdateStage;
-
+// Uses default behavior, logs the 5 latest osc messages 
 fn main() {
     App::build()
+        .add_plugins(DefaultPlugins)
         .add_plugin(OSC)
-        .add_system(event_listener_system.system())
         .run();
-}
-
-fn event_listener_system(mut events: EventReader<MyEvent>) {
-    println!("Triggered");
-    for my_event in events.iter() {
-        info!("{}", my_event.message);
-    }
 }
