@@ -1,34 +1,27 @@
-use bevy::{
-    core::{CorePlugin, Time, Timer},
-    input::Input,
-    prelude::{
-        info, AppBuilder, Commands, EventReader, EventWriter, IntoSystem, KeyCode,
-        ParallelSystemDescriptorCoercion, Plugin, Res, ResMut,
-    },
-    DefaultPlugins,
-};
+use bevy::prelude::{AppBuilder, Commands, EventWriter, IntoSystem, Plugin, Res, ResMut};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
-struct OSCReceiver {
+struct OscReceiver {
     receiver: Receiver,
 }
 
-struct OSCSender {
+#[allow(dead_code)]
+struct OscSender {
     sender: Sender<Connected>,
 }
 
 #[derive(Clone)]
-pub struct OSCLog {
+pub struct OscLog {
     pub received_packets: Vec<(std::net::SocketAddr, osc::Packet)>,
 }
 
-pub struct OSCEvent {
+pub struct OscEvent {
     pub addr: std::net::SocketAddr,
     pub packet: osc::Packet,
 }
 
-pub struct OSCSettings {
+pub struct OscSettings {
     pub max_log_packets: usize,
     pub recv_addr: Option<&'static str>,
     pub send_addr: Option<&'static str>,
@@ -36,7 +29,7 @@ pub struct OSCSettings {
     pub log: bool,
 }
 
-impl Default for OSCSettings {
+impl Default for OscSettings {
     fn default() -> Self {
         Self {
             recv_addr: Some("127.0.0.1:34254"),
@@ -51,16 +44,16 @@ impl Default for OSCSettings {
 pub struct OSC;
 impl Plugin for OSC {
     fn build(&self, app: &mut AppBuilder) {
-        app.init_resource::<OSCSettings>()
+        app.init_resource::<OscSettings>()
             .add_startup_system(osc_setup.system())
-            .add_event::<OSCEvent>()
+            .add_event::<OscEvent>()
             .add_system(osc_listener_update.system());
     }
 }
 
-fn osc_setup(mut commands: Commands, settings: Res<OSCSettings>) {
+fn osc_setup(mut commands: Commands, settings: Res<OscSettings>) {
     if settings.recv_addr.is_some() {
-        commands.insert_resource(OSCReceiver {
+        commands.insert_resource(OscReceiver {
             receiver: Receiver::bind_to(settings.recv_addr.unwrap()).unwrap(), /*osc::receiver(34254).unwrap(),*/
         });
         if settings.dbg {
@@ -69,7 +62,7 @@ fn osc_setup(mut commands: Commands, settings: Res<OSCSettings>) {
     }
 
     if settings.send_addr.is_some() {
-        commands.insert_resource(OSCSender {
+        commands.insert_resource(OscSender {
             sender: osc::sender()
                 .unwrap()
                 .connect(settings.send_addr.unwrap())
@@ -80,16 +73,16 @@ fn osc_setup(mut commands: Commands, settings: Res<OSCSettings>) {
         }
     }
 
-    commands.insert_resource(OSCLog {
+    commands.insert_resource(OscLog {
         received_packets: Vec::with_capacity(settings.max_log_packets),
     });
 }
 
 fn osc_listener_update(
-    rec: Res<OSCReceiver>,
-    settings: Res<OSCSettings>,
-    mut log: ResMut<OSCLog>,
-    mut osc_events: EventWriter<OSCEvent>,
+    rec: Res<OscReceiver>,
+    settings: Res<OscSettings>,
+    mut log: ResMut<OscLog>,
+    mut osc_events: EventWriter<OscEvent>,
 ) {
     //if rec.receiver.iter().count() <= 0 {return}
 
@@ -107,14 +100,14 @@ fn osc_listener_update(
             osc_log_update(log.clone())
         }
 
-        osc_events.send(OSCEvent {
+        osc_events.send(OscEvent {
             addr: address,
             packet: packet.clone(),
         });
     }
 }
 
-fn osc_log_update(log: OSCLog) {
+fn osc_log_update(log: OscLog) {
     println!("Log");
     for (_add, p) in log.received_packets.iter() {
         println!("{:?}", p);

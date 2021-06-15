@@ -11,6 +11,7 @@ description = ""
 keywords = ["gamedev", "bevy", "camera", "fps", "3d", ]
 categories = ["game-development", "game-engines", "encoding" ]
 exclude = [
+    ".github/*",
     "credits/*",
 ]
 
