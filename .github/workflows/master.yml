@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Dependencies
-        run: apt install pkg-config
+        run: sudo apt-get install pkg-config
 
   update:
     name: Update
