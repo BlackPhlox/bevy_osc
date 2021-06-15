@@ -1,9 +1,13 @@
 use bevy::{core::{Time, Timer}, prelude::{AppBuilder, Commands, EventReader, EventWriter, IntoSystem, Plugin, Res, ResMut, info}};
 use nannou_osc as osc;
-use osc::Receiver;
+use osc::{Connected, Receiver, Sender};
 
 struct OSCReceiver {
     receiver: Receiver,
+}
+
+struct OSCSender {
+    sender: Sender<Connected>,
 }
 
 #[derive(Clone)]
@@ -13,7 +17,8 @@ pub struct OSCLog {
 
 pub struct OSCSettings {
     pub max_packets: usize,
-    pub addr: &'static str,
+    pub recv_addr: Option<&'static str>,
+    pub send_addr: Option<&'static str>,
     pub dbg: bool,
 }
 
@@ -21,7 +26,8 @@ impl Default for OSCSettings {
     fn default() -> Self {
         Self {
             max_packets: 5,
-            addr: "127.0.0.1:34254",
+            recv_addr: Some("127.0.0.1:34254"),
+            send_addr: None,
             dbg: true,
         }
     }
@@ -40,17 +46,28 @@ impl Plugin for OSC {
 }
 
 fn osc_setup(mut commands: Commands, settings: Res<OSCSettings>) {
-    commands.insert_resource(OSCReceiver {
-        receiver: Receiver::bind_to(settings.addr).unwrap(), /*osc::receiver(34254).unwrap(),*/
-    });
+
+    if settings.recv_addr.is_some() {
+        commands.insert_resource(OSCReceiver {
+            receiver: Receiver::bind_to(settings.recv_addr.unwrap()).unwrap(), /*osc::receiver(34254).unwrap(),*/
+        });
+        if settings.dbg {
+            println!("OSC Listening on {}", settings.recv_addr.unwrap());
+        }
+    }
+
+    if settings.send_addr.is_some() {        
+        commands.insert_resource(OSCSender {
+            sender: osc::sender().unwrap().connect(settings.send_addr.unwrap()).unwrap(),
+        });
+        if settings.dbg {
+            println!("OSC Sending on {}", settings.send_addr.unwrap());
+        }
+    }
 
     commands.insert_resource(OSCLog {
         received_packets: Vec::with_capacity(settings.max_packets),
     });
-
-    if settings.dbg {
-        println!("OSC Listening on {}", settings.addr);
-    }
 }
 
 fn osc_listener_update(rec: Res<OSCReceiver>, settings: Res<OSCSettings>, mut log: ResMut<OSCLog>, mut my_events: EventWriter<MyEvent>,) {
