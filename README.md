@@ -1,7 +1,13 @@
 
 <div align="left">
-<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" width="1300" height="280" alt="bevy_osc"></a>
+<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" alt="bevy_osc"></a>
 </div>
+
+[![crates.io](https://img.shields.io/crates/v/bevy_osc)](https://crates.io/crates/bevy_osc)</br>[![docs.rs](https://docs.rs/bevy_osc/badge.svg)](https://docs.rs/bevy_osc)
+
+A plugin that uses [nannou_osc](https://github.com/nannou-org/nannou/tree/master/nannou_osc) that allows you to send (not yet implemented) and receive osc data for all who wants to control bevy from other programs or controllers.
+
+# Setup
 
 To test `simple` and the `custom` example:
 1. Install [orca](https://hundredrabbits.itch.io/orca)
