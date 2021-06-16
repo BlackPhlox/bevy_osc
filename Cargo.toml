@@ -8,7 +8,7 @@ readme = "README.md"
 repository = "https://github.com/BlackPhlox/bevy_osc"
 documentation = "https://docs.rs/bevy_osc"
 description = "Send and receive OSC data to and from bevy and other programs or controllers."
-keywords = ["gamedev", "bevy", "control", "osc", "logging", "encoding", "data"]
+keywords = ["gamedev", "bevy", "osc", "encoding", "control"]
 categories = ["game-development", "game-engines", "encoding" ]
 exclude = [
     ".github/*",
