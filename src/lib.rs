@@ -41,8 +41,8 @@ impl Default for OscSettings {
     }
 }
 
-pub struct OSC;
-impl Plugin for OSC {
+pub struct Osc;
+impl Plugin for Osc {
     fn build(&self, app: &mut AppBuilder) {
         app.init_resource::<OscSettings>()
             .add_startup_system(osc_setup.system())

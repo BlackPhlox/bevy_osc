@@ -7,7 +7,7 @@ fn main() {
         .add_plugin(OSC)
         .insert_resource(OscSettings {
             max_log_packets: 20,
-            recv_addr: Some("127.0.0.1:34254"),
+            recv_addr: Some("127.0.0.1:1234"),
             log: false,
             ..Default::default()
         })
