@@ -1,10 +1,10 @@
 use bevy::prelude::*;
-use bevy_osc::{OscEvent, OscSettings, OSC};
+use bevy_osc::{OscEvent, OscSettings, Osc};
 
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
-        .add_plugin(OSC)
+        .add_plugin(Osc)
         .insert_resource(OscSettings {
             max_log_packets: 20,
             recv_addr: Some("127.0.0.1:1234"),
