@@ -25,6 +25,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update apt
         run: sudo apt update
+      - name: Install pkg-config
+        run: sudo apt install pkg-config
       - name: Install alsa dev tools
         run: sudo apt-get install libasound2-dev
       - uses: actions-rs/toolchain@v1
@@ -44,6 +46,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update apt
         run: sudo apt update
+      - name: Install pkg-config
+        run: sudo apt install pkg-config
       - name: Install alsa dev tools
         run: sudo apt-get install libasound2-dev
       - uses: actions-rs/toolchain@v1
@@ -79,6 +83,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update apt
         run: sudo apt update
+      - name: Install pkg-config
+        run: sudo apt install pkg-config
       - name: Install alsa dev tools
         run: sudo apt-get install libasound2-dev
       - uses: actions-rs/toolchain@v1
