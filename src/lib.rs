@@ -91,7 +91,7 @@ fn osc_listener_update(
             log.received_packets.remove(0);
         }
 
-        let address = addr.clone();
+        let address = *addr;
 
         //println!("{:?}", packet);
         log.received_packets.push((address, packet.clone()));
