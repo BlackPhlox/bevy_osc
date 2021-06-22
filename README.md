@@ -1,7 +1,4 @@
-
-<div align="left">
-<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://raw.githubusercontent.com/BlackPhlox/BlackPhlox/master/bevy_osc.svg" alt="bevy_osc"></a>
-</div>
+# bevy_osc
 
 [![crates.io](https://img.shields.io/crates/v/bevy_osc)](https://crates.io/crates/bevy_osc)</br>[![docs.rs](https://docs.rs/bevy_osc/badge.svg)](https://docs.rs/bevy_osc)
 
