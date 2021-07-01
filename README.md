@@ -1,7 +1,16 @@
 # bevy_osc
 
-[![crates.io](https://img.shields.io/crates/v/bevy_osc)](https://crates.io/crates/bevy_osc)</br>[![docs.rs](https://docs.rs/bevy_osc/badge.svg)](https://docs.rs/bevy_osc)
-
+</br>
+<div align="left">
+<a href="https://crates.io/crates/bevy_osc"><img src="https://img.shields.io/crates/v/bevy_osc" alt="link to crates.io"></a>
+<a href="https://docs.rs/bevy_osc"><img src="https://docs.rs/bevy_osc/badge.svg" alt="link to docs.rs"></a>
+<a href="https://github.com/BlackPhlox/bevy_osc/blob/master/credits/CREDITS.md"><img src="https://img.shields.io/crates/l/bevy_osc" alt="link to license"></a>
+<a href="https://crates.io/crates/bevy_osc"><img src="https://img.shields.io/crates/d/bevy_osc" alt="downloads/link to crates.io"></a>   
+<a href="https://github.com/BlackPhlox/bevy_osc"><img src="https://img.shields.io/github/stars/BlackPhlox/bevy_osc" alt="stars/github repo"></a>
+<a href="https://github.com/BlackPhlox/bevy_osc/actions/workflows/master.yml"><img src="https://github.com/BlackPhlox/bevy_osc/actions/workflows/master.yml/badge.svg" alt="github actions"></a>
+<a href="https://github.com/bevyengine/bevy/blob/main/docs/plugins_guidelines.md#main-branch-tracking"><img src="https://img.shields.io/badge/Bevy%20tracking-released%20version-lightblue" alt="tracking bevy release branch"></a>
+</div>
+</br>
 A plugin that uses [nannou_osc](https://github.com/nannou-org/nannou/tree/master/nannou_osc) that allows you to send (not yet implemented) and receive osc data for all who wants to control bevy from other programs or controllers.
 
 # Setup
