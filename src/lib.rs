@@ -86,12 +86,12 @@ fn osc_listener_update(
 ) {
     //if rec.receiver.iter().count() <= 0 {return}
 
-    for (packet, addr) in rec.receiver.recv().iter() {
+    for (packet, addr) in rec.receiver.try_iter() {
         if log.received_packets.len() > settings.max_log_packets {
             log.received_packets.remove(0);
         }
 
-        let address = *addr;
+        let address = addr;
 
         //println!("{:?}", packet);
         log.received_packets.push((address, packet.clone()));
