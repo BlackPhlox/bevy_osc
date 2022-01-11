@@ -84,12 +84,12 @@ fn osc_listener_update(
     mut log: ResMut<OscLog>,
     mut osc_events: EventWriter<OscEvent>,
 ) {
-    for (packet, addr) in rec.receiver.recv().iter() {
+    for (packet, addr) in rec.receiver.try_iter() {
         if log.received_packets.len() > settings.max_log_packets {
             log.received_packets.remove(0);
         }
 
-        let address = *addr;
+        let address = addr;
 
         log.received_packets.push((address, packet.clone()));
 
