@@ -1,4 +1,4 @@
-use bevy::prelude::{Commands, EventWriter, IntoSystem, Plugin, Res, ResMut, App};
+use bevy::prelude::{App, Commands, EventWriter, IntoSystem, Plugin, Res, ResMut};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
