@@ -29,9 +29,10 @@ https://user-images.githubusercontent.com/25123512/122121093-81b57300-ce2b-11eb-
 |bevy|bevy_osc|
 |---|---|
 |0.5|0.1.X|
+|0.6|0.2.X|
 
 # Licensing
-The project is under dual license MIT and ISC (functionally equivalent, though ISC removing some language that is no longer necessary), so yoink to your hearts content, just remember the license agreements.
+The project is under dual license MIT and Apache 2.0, so joink to your hearts content, just remember the license agreements.
 
 # Contributing
 Yes this project is still very much WIP, so PRs are very welcome
