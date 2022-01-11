@@ -1,4 +1,4 @@
-use bevy::prelude::{AppBuilder, Commands, EventWriter, IntoSystem, Plugin, Res, ResMut};
+use bevy::prelude::{Commands, EventWriter, IntoSystem, Plugin, Res, ResMut, App};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
@@ -43,7 +43,7 @@ impl Default for OscSettings {
 
 pub struct Osc;
 impl Plugin for Osc {
-    fn build(&self, app: &mut AppBuilder) {
+    fn build(&self, app: &mut App) {
         app.init_resource::<OscSettings>()
             .add_startup_system(osc_setup.system())
             .add_event::<OscEvent>()
@@ -84,8 +84,6 @@ fn osc_listener_update(
     mut log: ResMut<OscLog>,
     mut osc_events: EventWriter<OscEvent>,
 ) {
-    //if rec.receiver.iter().count() <= 0 {return}
-
     for (packet, addr) in rec.receiver.recv().iter() {
         if log.received_packets.len() > settings.max_log_packets {
             log.received_packets.remove(0);
@@ -93,7 +91,6 @@ fn osc_listener_update(
 
         let address = *addr;
 
-        //println!("{:?}", packet);
         log.received_packets.push((address, packet.clone()));
 
         if settings.log {

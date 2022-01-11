@@ -1,9 +1,9 @@
 [package]
 name = "bevy_osc"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Black Phlox <bphlox@gmail.com>"]
-edition = "2018"
-license = "MIT OR ISC"
+edition = "2021"
+license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/BlackPhlox/bevy_osc"
 documentation = "https://docs.rs/bevy_osc"
@@ -21,18 +21,18 @@ exclude = [
 name = "bevy_osc"
 
 [dependencies]
-nannou_osc = "0.16.0"
+nannou_osc = "0.18.0"
 
 [dependencies.bevy]
-version = "0.5"
+version = "0.6"
 default-features = false
 
 [dev-dependencies.bevy]
-version = "0.5"
-features = ["render", "bevy_winit", "bevy_wgpu", "bevy_gltf"]
+version = "0.6"
+features = ["render", "bevy_winit"]
 default-features = false
 
 [target.'cfg(target_os = "linux")'.dev-dependencies.bevy]
-version = "0.5"
+version = "0.6"
 features = ["x11", "wayland"]
 default-features = false
