@@ -1,14 +1,15 @@
-use bevy::prelude::{App, Commands, EventWriter, Plugin, Res, ResMut};
+use bevy::prelude::{App, Commands, Deref, EventWriter, Plugin, Res, ResMut};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
-struct OscReceiver {
+pub struct OscReceiver {
     receiver: Receiver,
 }
 
+#[derive(Deref)]
 #[allow(dead_code)]
-struct OscSender {
-    sender: Sender<Connected>,
+pub struct OscSender {
+    pub sender: Sender<Connected>,
 }
 
 #[derive(Clone)]
