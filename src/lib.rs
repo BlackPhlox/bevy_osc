@@ -1,4 +1,4 @@
-use bevy::prelude::{App, Commands, EventWriter, IntoSystem, Plugin, Res, ResMut};
+use bevy::prelude::{App, Commands, EventWriter, Plugin, Res, ResMut};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
@@ -45,9 +45,9 @@ pub struct Osc;
 impl Plugin for Osc {
     fn build(&self, app: &mut App) {
         app.init_resource::<OscSettings>()
-            .add_startup_system(osc_setup.system())
+            .add_startup_system(osc_setup)
             .add_event::<OscEvent>()
-            .add_system(osc_listener_update.system());
+            .add_system(osc_listener_update);
     }
 }
 
