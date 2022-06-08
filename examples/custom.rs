@@ -10,7 +10,7 @@ fn main() {
             log: false,
             ..Default::default()
         })
-        .add_system(event_listener_system.system())
+        .add_system(event_listener_system)
         .run();
 }
 
