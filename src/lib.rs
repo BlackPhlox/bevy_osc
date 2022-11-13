@@ -1,18 +1,19 @@
-use bevy::prelude::{App, Commands, Deref, EventWriter, Plugin, Res, ResMut};
+use bevy::prelude::{App, Commands, Deref, EventWriter, Plugin, Res, ResMut, Resource};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
+#[derive(Resource)]
 pub struct OscReceiver {
     receiver: Receiver,
 }
 
-#[derive(Deref)]
+#[derive(Resource, Deref)]
 #[allow(dead_code)]
 pub struct OscSender {
     pub sender: Sender<Connected>,
 }
 
-#[derive(Clone)]
+#[derive(Resource,Clone)]
 pub struct OscLog {
     pub received_packets: Vec<(std::net::SocketAddr, osc::Packet)>,
 }
@@ -22,6 +23,7 @@ pub struct OscEvent {
     pub packet: osc::Packet,
 }
 
+#[derive(Resource)]
 pub struct OscSettings {
     pub max_log_packets: usize,
     pub recv_addr: Option<&'static str>,

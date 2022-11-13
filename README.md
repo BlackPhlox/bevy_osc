@@ -33,6 +33,7 @@ https://user-images.githubusercontent.com/25123512/122121093-81b57300-ce2b-11eb-
 |0.6|0.2.X|
 |0.7|0.3.X|
 |0.8|0.4.X|
+|0.9|0.5.X|
 
 # Licensing
 The project is under dual license MIT and Apache 2.0, so joink to your hearts content, just remember the license agreements.
