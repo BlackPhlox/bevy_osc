@@ -13,7 +13,7 @@ pub struct OscSender {
     pub sender: Sender<Connected>,
 }
 
-#[derive(Resource,Clone)]
+#[derive(Resource, Clone)]
 pub struct OscLog {
     pub received_packets: Vec<(std::net::SocketAddr, osc::Packet)>,
 }
