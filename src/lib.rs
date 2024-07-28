@@ -1,4 +1,4 @@
-use bevy::prelude::{App, Commands, Deref, EventWriter, Plugin, Res, ResMut, Resource};
+use bevy::{app::{Startup, Update}, prelude::{App, Commands, Deref, Event, EventWriter, Plugin, Res, ResMut, Resource}};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
@@ -18,6 +18,7 @@ pub struct OscLog {
     pub received_packets: Vec<(std::net::SocketAddr, osc::Packet)>,
 }
 
+#[derive(Event)]
 pub struct OscEvent {
     pub addr: std::net::SocketAddr,
     pub packet: osc::Packet,
@@ -48,9 +49,9 @@ pub struct Osc;
 impl Plugin for Osc {
     fn build(&self, app: &mut App) {
         app.init_resource::<OscSettings>()
-            .add_startup_system(osc_setup)
+            .add_systems(Startup, osc_setup)
             .add_event::<OscEvent>()
-            .add_system(osc_listener_update);
+            .add_systems(Update, osc_listener_update);
     }
 }
 
