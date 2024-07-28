@@ -1,4 +1,7 @@
-use bevy::{app::{Startup, Update}, prelude::{App, Commands, Deref, Event, EventWriter, Plugin, Res, ResMut, Resource}};
+use bevy::{
+    app::{Startup, Update},
+    prelude::{App, Commands, Deref, Event, EventWriter, Plugin, Res, ResMut, Resource},
+};
 use nannou_osc as osc;
 use osc::{Connected, Receiver, Sender};
 
