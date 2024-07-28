@@ -5,21 +5,21 @@ use nannou_osc::{Message, Packet, Type};
 fn main() {
     App::new()
         .add_plugins(DefaultPlugins)
-        .add_plugin(Osc)
+        .add_plugins(Osc)
         .insert_resource(OscSettings {
             recv_addr: Some("127.0.0.1:34254"),
             send_addr: Some("127.0.0.1:34254"),
             log: false,
             ..Default::default()
         })
-        .add_system(event_listener_system)
-        .add_system(event_sender_system)
+        .add_systems(Update, event_listener_system)
+        .add_systems(Update, event_sender_system)
         .run();
 }
 
 //Make events a type param?
 fn event_listener_system(mut events: EventReader<OscEvent>) {
-    for my_event in events.iter() {
+    for my_event in events.read() {
         info!("OSC Package: {:?}", my_event.packet);
     }
 }
@@ -31,7 +31,7 @@ fn event_sender_system(events: Option<Res<OscSender>>, time: Res<Time>, mut last
         if let Some(sender) = events {
             let _ = sender.send(Packet::Message(Message {
                 addr: "/c".to_string(),
-                args: Some(vec![Type::Int(1), Type::Int(2), Type::Int(3)]),
+                args: vec![Type::Int(1), Type::Int(2), Type::Int(3)],
             }));
         }
         *last_time = time.elapsed_seconds_f64();
